@@ -1,6 +1,7 @@
 package com.jove.android.utils;
 
 public class NumberUtil {
+
     public static int convertToint(String intStr, int defValue) {
         try {
             return Integer.parseInt(intStr);
@@ -32,7 +33,6 @@ public class NumberUtil {
         }
         return defValue;
     }
-
 
     public static Integer convertToInteger(String intStr) {
         try {
