@@ -45,12 +45,12 @@ public class CommonRecyclerView extends RecyclerView {
     public class Config {
 
         /**
-         * 列表试图种类
+         * 列表视图种类，也就是ViewType所对应的Holder
          */
         private HashMap<Integer, EViewHolder> viewHolders = new HashMap<>(5);
 
         /**
-         * 数据为空时的背景填充试图。 可以为空（空白背景）
+         * 数据为空时的背景填充视图。 可以为空（空白背景）
          */
         private View emptyFillView;
 
@@ -72,10 +72,17 @@ public class CommonRecyclerView extends RecyclerView {
 
     public interface Events {
         /**
+         * @param parent
+         * @param viewType 暂时计划这个里的viewType为数据项的class.hashCode, 即：item.getClass().hashCode();
+         * @return
+         */
+        @NonNull
+        EViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
+
+        /**
          * 刷新 或 下拉刷新
          */
         void onRefresh();
-
     }
 
     public abstract static class EViewHolder extends ViewHolder {
