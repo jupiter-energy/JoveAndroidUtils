@@ -11,10 +11,24 @@ import android.view.ViewGroup;
 import java.util.HashMap;
 
 /**
- * 通用的列表 (下拉刷新, 加载更多，空背景VIEW 等。)
+ * 通用的列表 (下拉刷新, 加载更多，空背景VIEW 等)
  * @author gleamy
+ * @date 2018-04-22.
  */
 public class CommonRecyclerView extends RecyclerView {
+
+    /**
+     * 应用级别的默认配置
+     */
+    private static Config appDefaultConfig = null;
+
+    /**
+     * 设置应用级的默认配置
+     * @param config
+     */
+    public static void setAppDefaultConfig(Config config){
+        appDefaultConfig = config;
+    }
 
     public CommonRecyclerView(Context context) {
         super(context);
@@ -29,13 +43,38 @@ public class CommonRecyclerView extends RecyclerView {
     }
 
     public class Config {
+
         /**
          * 列表试图种类
          */
         private HashMap<Integer, EViewHolder> viewHolders = new HashMap<>(5);
+
+        /**
+         * 数据为空时的背景填充试图。 可以为空（空白背景）
+         */
+        private View emptyFillView;
+
+        /**
+         * 下拉刷新视图。 可以为空（使用默认视图）
+         */
+        private View pullRefreshView;
+
+        /**
+         * 载入更多时的视图。可以为空（使用默认视图）
+         */
+        private View loadMoveView;
+
+        /**
+         * 没有更视图。可以为空（使用默认视图）
+         */
+        private View noMoveView;
     }
 
     public interface Events {
+        /**
+         * 刷新 或 下拉刷新
+         */
+        void onRefresh();
 
     }
 
