@@ -1,4 +1,4 @@
-package com.jove.android.utils
+package com.jove.android.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
